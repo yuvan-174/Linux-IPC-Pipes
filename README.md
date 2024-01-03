@@ -1,11 +1,11 @@
-# Linux-IPC-Unnamed-Pipes
-Linux-IPC-Unnamed Pipes
+# Linux-IPC--Pipes
+Linux-IPC-Pipes
 
 
-# Ex03-Linux IPC - Unnamed Pipes
+# Ex03-Linux IPC - Pipes
 
 # AIM:
-To write a C program that illustrate communication between two process using unnamed pipes
+To write a C program that illustrate communication between two process using unnamed and named pipes
 
 # DESIGN STEPS:
 
@@ -15,7 +15,7 @@ Navigate to any Linux environment installed on the system or installed inside a 
 
 ### Step 2:
 
-Write the C Program using Linux Process API - pipe()
+Write the C Program using Linux Process API - pipe(), fifo()
 
 ### Step 3:
 
@@ -31,6 +31,14 @@ Testing the C Program for the desired output.
 
 ## OUTPUT
 
+
+## C Program that illustrate communication between two process using named pipes using Linux API system calls
+
+
+
+
+
+## OUTPUT
 
 
 # RESULT:
