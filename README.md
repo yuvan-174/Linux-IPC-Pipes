@@ -125,6 +125,16 @@ to check pipe
 
 ## C Program that illustrate communication between two process using named pipes using Linux API system calls
 ```c
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+int main(){
+int res = mkfifo("/tmp/my_fifo", 0777);
+if (res == 0) printf("FIFO created\n");
+exit(EXIT_SUCCESS);
+}
 
 ```
 
@@ -132,6 +142,7 @@ to check pipe
 
 
 ## OUTPUT
+![image](https://github.com/user-attachments/assets/501c6b88-a2d7-4f92-892c-adedd05665f4)
 
 
 # RESULT:
