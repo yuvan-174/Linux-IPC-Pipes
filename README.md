@@ -40,53 +40,46 @@ void client(int wfd, int rfd);
 int main() {
     int p1[2], p2[2], pid, *waits;
     
-    // Create two pipes
-    pipe(p1); // Pipe for communication from client to server
-    pipe(p2); // Pipe for communication from server to client
+    pipe(p1); 
+    pipe(p2); 
 
-    // Fork a new process
     pid = fork();
-    if (pid == 0) { // Child process (Server)
-        close(p1[1]); // Close unused write end of p1
-        close(p2[0]); // Close unused read end of p2
-        server(p1[0], p2[1]); // Call server function
+    if (pid == 0) { 
+        close(p1[1]); 
+        close(p2[0]); 
+        server(p1[0], p2[1]); 
         return 0;
     }
 
-    // Parent process (Client)
-    close(p1[0]); // Close unused read end of p1
-    close(p2[1]); // Close unused write end of p2
-    client(p1[1], p2[0]); // Call client function
-    wait(waits); // Wait for the child process to finish
+    close(p1[0]); 
+    close(p2[1]); 
+    client(p1[1], p2[0]); 
+    wait(waits); 
     return 0;
 }
 
-// Function to handle server-side operations
+
 void server(int rfd, int wfd) {
     int n;
-    char fname[2000]; // Buffer for file name
-    char buff[2000];  // Buffer for file content
+    char fname[2000]; 
+    char buff[2000];  
 
-    // Read the file name from the client
+ 
     n = read(rfd, fname, 2000);
-    fname[n] = '\0'; // Null terminate the file name
+    fname[n] = '\0'; 
 
-    // Open the requested file
     int fd = open(fname, O_RDONLY);
-    sleep(10); // Simulate delay for demonstration
+    sleep(10); 
 
-    // If file can't be opened, send an error message
     if (fd < 0) {
         write(wfd, "can't open", 10);
     } else {
-        // Read content from the file
+
         n = read(fd, buff, 2000);
-        write(wfd, buff, n); // Write content back to client
-        close(fd); // Close the file descriptor
+        write(wfd, buff, n); 
+        close(fd); 
     }
 }
-
-// Function to handle client-side operations
 void client(int wfd, int rfd) {
     int n;
     char fname[2000]; // Buffer for file name
